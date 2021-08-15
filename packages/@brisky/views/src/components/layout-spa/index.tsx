@@ -15,6 +15,7 @@ export default defineComponent({
   props: {
   },
   setup() {
+    return {}
   },
   render() {
     const $slots = this.$slots
