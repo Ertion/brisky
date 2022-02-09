@@ -11,10 +11,11 @@
     ]
   },
   "scripts": {
+    "commit": "git-cz",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
-    "docs:dev": "lerna run --stream --scope @brisky/docs docs:dev",
-    "docs:build": "lerna run --stream --scope @brisky/docs docs:build",
+    "version": "lerna version --conventional-commits",
+    "build":"yarn run cli:build && yarn run util:build && yarn run api:build && yarn run eventbus:build && yarn run core:build",
     "docs:deploy": "lerna run --stream --scope @brisky/docsdeploy",
     "util:build": "lerna run --stream --scope @brisky/util build",
     "api:build": "lerna run --stream --scope @brisky/api build",
@@ -24,7 +25,30 @@
     "views:serve": "lerna run --stream --scope @brisky/views brisky:serve",
     "views:build": "lerna run --stream --scope @brisky/views brisky:build"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "packages/@brisky/*/src/*.ts": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "commitizen": "^4.2.4",
+    "cz-lerna-changelog": "^2.0.3",
+    "husky": "^7.0.2",
+    "lerna": "^4.0.0",
+    "lint-staged": "^11.1.2"
   }
 }

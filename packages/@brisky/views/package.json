@@ -19,7 +19,7 @@
     "vue": "^3.0.4"
   },
   "devDependencies": {
-    "@brisky/vue-cli-plugin-pack": "^0.0.0",
+    "@brisky/vue-cli-plugin-pack": "0.0.0",
     "@types/lodash": "^4.14.172",
     "@types/node": "^16.4.13",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
@@ -53,7 +53,8 @@
     "rules": {
       "@typescript-eslint/no-var-requires": 0,
       "@typescript-eslint/no-explicit-any": 0,
-      "@typescript-eslint\no-empty-function": 0,
+      "@typescript-eslint/no-empty-function": 0,
+      "@typescript-eslint/ban-ts-comment": 0,
       "no-debugger": 0,
       "no-console": 0
     }
